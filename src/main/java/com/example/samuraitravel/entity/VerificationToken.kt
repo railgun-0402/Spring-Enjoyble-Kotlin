@@ -1,29 +1,28 @@
-package com.example.samuraitravel.entity;
+package com.example.samuraitravel.entity
 
-import jakarta.persistence.*;
-import lombok.Data;
-
-import java.sql.Timestamp;
+import jakarta.persistence.*
+import lombok.Data
+import java.sql.Timestamp
 
 @Entity
 @Table(name = "verification_tokens")
 @Data
-public class VerificationToken {
+class VerificationToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    val id: Int? = null
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    val user: User? = null
 
     @Column(name = "token")
-    private String token;
+    val token: String? = null
 
     @Column(name = "created_at", insertable = false, updatable = false)
-    private Timestamp createdAt;
+    val createdAt: Timestamp? = null
 
     @Column(name = "updated_at", insertable = false, updatable = false)
-    private Timestamp updatedAt;
+    val updatedAt: Timestamp? = null
 }
