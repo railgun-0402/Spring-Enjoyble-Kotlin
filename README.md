@@ -1,4 +1,4 @@
-# Spring_Enjoyable_SSG
+# Spring_Enjoyable_Kotlin
 ## 概要
 ### 内容 
 旅行で遊べる施設や食事・宿の記述をするサイトにチャレンジ。
