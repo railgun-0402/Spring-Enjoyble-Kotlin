@@ -1,22 +1,14 @@
 # Spring_Enjoyable_Kotlin
 ## 概要
 ### 内容 
-旅行で遊べる施設や食事・宿の記述をするサイトにチャレンジ。
+下記ブランチで旅行で遊べる施設や食事・宿の記述をするサイトにチャレンジ中。
+途中でKotlinでも記載してみたくなったので、途中でフォークした。
 
-元々はReactとJavaで分けて、Java側はRest ControllerでAPIとして
-呼び出してたが、
-
-Thymeleafの学習が必要になったため、仕方なく形式変更。
+InteliJの機能でKotlinに変換して別途開発を継続する
 
 #### 元ブランチ
-https://github.com/railgun-0402/Spring_Enjoyable_Site
+[https://github.com/railgun-0402/Spring_Enjoyable_Site](https://github.com/railgun-0402/Spring-Enjoyble-SSG)
 
-### 目的
-サイトの作成による、springのコーディング力をつけることや
-
-現場で使っている技術をキャッチアップすること。
-
-AWSも使用する予定だが、費用と開発初期段階のため未定。
 
 ## 使用技術(作成中なので予定も含む)
 ### バックエンド
