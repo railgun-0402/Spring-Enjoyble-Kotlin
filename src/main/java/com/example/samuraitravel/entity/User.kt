@@ -1,50 +1,58 @@
-package com.example.samuraitravel.entity;
+package com.example.samuraitravel.entity
 
-import jakarta.persistence.*;
-import lombok.Data;
-
-import java.sql.Timestamp;
+import jakarta.persistence.*
+import jakarta.validation.constraints.Email
+import jakarta.validation.constraints.NotBlank
+import java.sql.Timestamp
 
 @Entity
 @Table(name = "users")
-@Data
-public class User {
+class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    val id: Int? = null,
 
+    @field:NotBlank(message = "氏名を入力してください。")
     @Column(name = "name")
-    private String name;
+    val name: String? = null,
 
+    @field:NotBlank(message = "フリガナを入力してください。")
     @Column(name = "furigana")
-    private String furigana;
+    val furigana: String? = null,
 
+    @field:NotBlank(message = "郵便番号を入力してください。")
     @Column(name = "postal_code")
-    private String postalCode;
+    val postalCode: String? = null,
 
+    @field:NotBlank(message = "住所を入力してください。")
     @Column(name = "address")
-    private String address;
+    val address: String? = null,
 
+    @field:NotBlank(message = "電話番号を入力してください。")
     @Column(name = "phone_number")
-    private String phoneNumber;
+    val phoneNumber: String? = null,
 
+    @field:NotBlank(message = "メールアドレスを入力してください。")
+    @field:Email(message = "メールアドレスは正しい形式で入力してください。")
     @Column(name = "email")
-    private String email;
+    val email: String? = null,
 
     @Column(name = "password")
-    private String password;
+    val password: String,
 
     @ManyToOne
     @JoinColumn(name = "role_id")
-    private Role role;
+    val role: Role? = null,
 
     @Column(name = "enabled")
-    private Boolean enabled;
+    var enabled: Boolean = false,
 
     @Column(name = "created_at", insertable = false, updatable = false)
-    private Timestamp createdAt;
+    val createdAt: Timestamp? = null,
 
     @Column(name = "updated_at", insertable = false, updatable = false)
-    private Timestamp updatedAt;
+    val updatedAt: Timestamp? = null
+) {
+    constructor() : this(null, null, null, null, null, null, null, "", null, false, null, null)
 }

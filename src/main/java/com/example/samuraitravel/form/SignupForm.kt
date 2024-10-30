@@ -1,35 +1,27 @@
-package com.example.samuraitravel.form;
+package com.example.samuraitravel.form
 
-import jakarta.validation.constraints.Email;
-import lombok.Data;
-import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.Length;
+import jakarta.validation.constraints.Email
+import jakarta.validation.constraints.NotBlank
+import org.hibernate.validator.constraints.Length
 
-@Data
-public class SignupForm {
-    @NotBlank(message = "氏名を入力してください。")
-    private String name;
+class SignupForm {
+    val name: @NotBlank(message = "氏名を入力してください。") String? = null
 
-    @NotBlank(message = "フリガナを入力してください。")
-    private String furigana;
+    val furigana: @NotBlank(message = "フリガナを入力してください。") String? = null
 
-    @NotBlank(message = "郵便番号を入力してください。")
-    private String postalCode;
+    val postalCode: @NotBlank(message = "郵便番号を入力してください。") String? = null
 
-    @NotBlank(message = "住所を入力してください。")
-    private String address;
+    val address: @NotBlank(message = "住所を入力してください。") String? = null
 
-    @NotBlank(message = "電話番号を入力してください。")
-    private String phoneNumber;
+    val phoneNumber: @NotBlank(message = "電話番号を入力してください。") String? = null
 
-    @NotBlank(message = "メールアドレスを入力してください。")
-    @Email(message = "メールアドレスは正しい形式で入力してください。")
-    private String email;
+    val email: @NotBlank(message = "メールアドレスを入力してください。") @Email(message = "メールアドレスは正しい形式で入力してください。") String? =
+        null
 
-    @NotBlank(message = "パスワードを入力してください。")
-    @Length(min = 8, message = "パスワードは8文字以上で入力してください。")
-    private String password;
+    val password: @NotBlank(message = "パスワードを入力してください。") @Length(
+        min = 8,
+        message = "パスワードは8文字以上で入力してください。"
+    ) String? = null
 
-    @NotBlank(message = "パスワード（確認用）を入力してください。")
-    private String passwordConfirmation;
+    val passwordConfirmation: @NotBlank(message = "パスワード（確認用）を入力してください。") String? = null
 }

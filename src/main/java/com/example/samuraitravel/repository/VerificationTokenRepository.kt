@@ -1,9 +1,11 @@
-package com.example.samuraitravel.repository;
+package com.example.samuraitravel.repository
 
-import com.example.samuraitravel.entity.VerificationToken;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.samuraitravel.entity.VerificationToken
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
 
-public interface VerificationTokenRepository extends JpaRepository<VerificationToken, Integer> {
-    public VerificationToken findByToken(String token);
+@Repository
+interface VerificationTokenRepository : JpaRepository<VerificationToken?, Int?> {
+    fun findByToken(token: String?): VerificationToken?
 }
 

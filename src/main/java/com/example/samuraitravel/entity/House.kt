@@ -1,134 +1,43 @@
-package com.example.samuraitravel.entity;
+package com.example.samuraitravel.entity
 
-import jakarta.persistence.*;
-import lombok.Data;
-
-import java.sql.Timestamp;
+import jakarta.persistence.*
+import java.sql.Timestamp
 
 @Entity
 @Table(name = "houses")
-@Data
-public class House {
+class House {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    var id: Int? = null
 
     @Column(name = "name")
-    private String name;
+    var name: String? = null
 
     @Column(name = "image_name")
-    private String imageName;
+    var imageName: String? = null
 
     @Column(name = "description")
-    private String description;
+    var description: String? = null
 
     @Column(name = "price")
-    private Integer price;
+    var price: Int? = null
 
     @Column(name = "capacity")
-    private Integer capacity;
+    var capacity: Int? = null
 
     @Column(name = "postal_code")
-    private String postalCode;
+    var postalCode: String? = null
 
     @Column(name = "address")
-    private String address;
+    var address: String? = null
 
     @Column(name = "phone_number")
-    private String phoneNumber;
+    var phoneNumber: String? = null
 
     @Column(name = "created_at", insertable = false, updatable = false)
-    private Timestamp createdAt;
+    var createdAt: Timestamp? = null
 
     @Column(name = "updated_at", insertable = false, updatable = false)
-    private Timestamp updatedAt;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getImageName() {
-        return imageName;
-    }
-
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public Integer getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Timestamp getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+    var updatedAt: Timestamp? = null
 }

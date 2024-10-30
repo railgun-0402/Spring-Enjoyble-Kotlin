@@ -1,59 +1,55 @@
-package com.example.samuraitravel.service;
+package com.example.samuraitravel.service
 
-import com.example.samuraitravel.entity.Role;
-import com.example.samuraitravel.entity.User;
-import com.example.samuraitravel.form.SignupForm;
-import com.example.samuraitravel.repository.RoleRepository;
-import com.example.samuraitravel.repository.UserRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.example.samuraitravel.entity.User
+import com.example.samuraitravel.form.SignupForm
+import com.example.samuraitravel.repository.RoleRepository
+import com.example.samuraitravel.repository.UserRepository
+import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
-public class UserService {
-    private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
-    private final PasswordEncoder passwordEncoder;
-
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
-
+open class UserService(
+    private val userRepository: UserRepository,
+    private val roleRepository: RoleRepository,
+    private val passwordEncoder: PasswordEncoder
+) {
     @Transactional
-    public User createUser(SignupForm signupForm) {
-        User user = new User();
-        Role role = roleRepository.findByName("ROLE_GENERAL");
+    open fun createUser(signupForm: SignupForm): User {
+        val role = roleRepository.findByName("ROLE_GENERAL")
 
-        user.setName(signupForm.getName());
-        user.setFurigana(signupForm.getFurigana());
-        user.setPostalCode(signupForm.getPostalCode());
-        user.setAddress(signupForm.getAddress());
-        user.setPhoneNumber(signupForm.getPhoneNumber());
-        user.setEmail(signupForm.getEmail());
-        user.setPassword(passwordEncoder.encode(signupForm.getPassword()));
-        user.setRole(role);
-        user.setEnabled(false);
+        val user = User(
+            name = signupForm.name,
+            furigana = signupForm.furigana,
+            postalCode = signupForm.postalCode,
+            address = signupForm.address,
+            phoneNumber = signupForm.phoneNumber,
+            email = signupForm.email,
+            password = passwordEncoder.encode(signupForm.password),
+            role = role,
+            enabled = false
+        )
 
-        return userRepository.save(user);
+        return userRepository.save(user)
     }
 
     // メールアドレスが登録済か確認
-    public boolean isEmailRegistered(String email) {
-        User user = userRepository.findByEmail(email);
-        return user != null;
+    fun isEmailRegistered(email: String?): Boolean {
+        val user = userRepository.findByEmail(email)
+        return user != null
     }
 
     // パスワードとパスワード（確認用）の入力値が一致するかどうかをチェックする
-    public boolean isSamePassword(String password, String passwordConfirmation) {
-        return password.equals(passwordConfirmation);
+    fun isSamePassword(password: String?, passwordConfirmation: String?): Boolean {
+        return password == passwordConfirmation
     }
 
     // ユーザ有効
     @Transactional
-    public void enableUser(User user) {
-        user.setEnabled(true);
-        userRepository.save(user);
+    open fun enableUser(user: User?) {
+        if (user != null) {
+            user.enabled = true
+            userRepository.save(user)
+        }
     }
 }

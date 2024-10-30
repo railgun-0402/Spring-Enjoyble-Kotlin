@@ -1,17 +1,15 @@
-package com.example.samuraitravel.entity;
+package com.example.samuraitravel.entity
 
-import jakarta.persistence.*;
-import lombok.Data;
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "roles")
-@Data
-public class Role {
+class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    var id: Int? = null
 
     @Column(name = "name")
-    private String name;
+    var name: String? = null
 }

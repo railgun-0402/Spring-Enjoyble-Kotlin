@@ -1,8 +1,10 @@
-package com.example.samuraitravel.repository;
+package com.example.samuraitravel.repository
 
-import com.example.samuraitravel.entity.Role;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.samuraitravel.entity.Role
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
 
-public interface RoleRepository extends JpaRepository<Role, Integer> {
-    public Role findByName(String name);
+@Repository
+interface RoleRepository : JpaRepository<Role?, Int?> {
+    fun findByName(name: String?): Role?
 }

@@ -1,8 +1,10 @@
-package com.example.samuraitravel.repository;
+package com.example.samuraitravel.repository
 
-import com.example.samuraitravel.entity.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.samuraitravel.entity.User
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
 
-public interface UserRepository extends JpaRepository<User, Integer> {
-    public User findByEmail(String email);
+@Repository
+interface UserRepository : JpaRepository<User?, Int?> {
+    fun findByEmail(email: String?): User?
 }

@@ -1,36 +1,25 @@
-package com.example.samuraitravel.security;
+package com.example.samuraitravel.security
 
-import com.example.samuraitravel.entity.User;
-import com.example.samuraitravel.repository.UserRepository;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Collection;
+import com.example.samuraitravel.repository.UserRepository
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
+import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UserDetailsService
+import org.springframework.security.core.userdetails.UsernameNotFoundException
+import org.springframework.stereotype.Service
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
-    private final UserRepository userRepository;
-
-    public UserDetailsServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+class UserDetailsServiceImpl(private val userRepository: UserRepository) : UserDetailsService {
+    @Throws(UsernameNotFoundException::class)
+    override fun loadUserByUsername(email: String): UserDetails {
         try {
-            System.out.println("UserDetailsServiceImpl");
-            User user = userRepository.findByEmail(email);
-            String userRoleName = user.getRole().getName();
-            Collection<GrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority(userRoleName));
-            return new UserDetailsImpl(user, authorities);
-        } catch (Exception e) {
-            throw new UsernameNotFoundException("ユーザーが見つかりませんでした。");
+            val user = userRepository.findByEmail(email)
+            val userRoleName: String = user?.role?.name.toString()
+            val authorities: MutableCollection<GrantedAuthority> = ArrayList()
+            authorities.add(SimpleGrantedAuthority(userRoleName))
+            return UserDetailsImpl(user, authorities)
+        } catch (e: Exception) {
+            throw UsernameNotFoundException("ユーザーが見つかりませんでした。")
         }
     }
 }
